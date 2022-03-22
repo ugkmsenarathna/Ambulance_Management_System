@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  ambulance: AmbulanceData[] = [];
+  public ambulance: AmbulanceData[];
   count: number;
 
   constructor(private dataService: DataService) { }
@@ -16,8 +16,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     this.dataService.GetAmbulanceDatas().subscribe(
-      x => this.ambulance.push(new AmbulanceData(x[1])));
-
+      (result: any ) => {
+        this.ambulance = result[1];
+      });
     this.count = this.ambulance.length;
   }
 }
