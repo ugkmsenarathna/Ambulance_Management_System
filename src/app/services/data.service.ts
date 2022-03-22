@@ -33,6 +33,8 @@ export class DataService {
   }
   AddPatient(newPatient: AmbulanceData, type): Observable<any> {
     if (type === 'add') {
+      console.log('newPatient');
+      console.log(newPatient);
       return this.httpClient.post(this.BASE_URL + 'api/register-ambulance/' , newPatient , {headers: this.headers});
     } else {
       return this.httpClient.post(this.BASE_URL + 'api/update-ambulance/' , newPatient , {headers: this.headers});

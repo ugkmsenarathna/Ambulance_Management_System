@@ -37,13 +37,13 @@ export class AmbulanceComponent implements OnInit {
   AddUpdatePatient() {
     switch (this.modalMod) {
       case 'add':
-        this.ambulanceForm.value.id = this.dataService.GetAmbulanceDatas().subscribe();
-        this.dataService.AddPatient(this.ambulanceForm.value, 'add');
+        // this.ambulanceForm.value.id = this.dataService.GetAmbulanceDatas().subscribe();
+        this.dataService.AddPatient(this.ambulanceForm.value, 'add').subscribe();
         this.ClearPatientForm();
         break;
       case 'update':
-        this.ambulanceForm.value.id = this.dataService.GetAmbulanceDatas().subscribe();
-        this.dataService.AddPatient(this.ambulanceForm.value, 'update');
+        // this.ambulanceForm.value.id = this.dataService.GetAmbulanceDatas().subscribe();
+        this.dataService.AddPatient(this.ambulanceForm.value, 'update').subscribe();
         break;
     }
   }
