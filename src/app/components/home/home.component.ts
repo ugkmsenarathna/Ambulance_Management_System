@@ -14,12 +14,12 @@ export class HomeComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    let ambulances: AmbulanceData[] = [];
     this.dataService.GetAmbulanceDatas().subscribe(
-
       (data: AmbulanceData) => {
-       }
-    );
+        ambulances.push(data);
+       });
+    this.count = ambulances.length;
   }
-
 }
 

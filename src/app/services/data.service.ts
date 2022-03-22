@@ -24,11 +24,11 @@ export class DataService {
   //   return exampleJSON;
   // }
 
-  
+
 
   GetAmbulanceDatas() {
 
-    return this.httpClient.get(this.BASE_URL + 'api/view-all/' , {headers: this.headers});;
+    return this.httpClient.get(this.BASE_URL + 'api/view-all/' , {headers: this.headers});
   }
   AddPatient(newPatient: AmbulanceData) {
     // this.patientData.push(newPatient);

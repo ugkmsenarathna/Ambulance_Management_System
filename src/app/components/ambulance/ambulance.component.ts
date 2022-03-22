@@ -20,9 +20,8 @@ export class AmbulanceComponent implements OnInit {
     this.dataService.GetAmbulanceDatas().subscribe(
 
       (data: AmbulanceData) => {
-        
-       }
-    );
+          this.ambulances.push(data);
+       });
     this.ambulanceForm = this.formBuilder.group({
       licensePlate: '',
       vehicleModel: '',
