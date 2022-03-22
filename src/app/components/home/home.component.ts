@@ -16,7 +16,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     this.dataService.GetAmbulanceDatas().subscribe(
-      x => this.ambulance.push(new AmbulanceData(x)));
+      x => this.ambulance.push(new AmbulanceData(x[1])));
+
+    this.count = this.ambulance.length;
   }
 }
 
