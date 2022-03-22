@@ -48,8 +48,7 @@ export class AmbulanceComponent implements OnInit {
     }
   }
   RemovePatient(patient: AmbulanceData) {
-    const index = this.ambulance.indexOf(patient);
-    this.ambulance.splice(index, 1);
+    this.dataService.removeRecord(patient);
   }
   ClearPatientForm() {
     this.ControlSetValueLoop(undefined);

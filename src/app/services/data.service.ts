@@ -38,4 +38,8 @@ export class DataService {
       return this.httpClient.post(this.BASE_URL + 'api/update-ambulance/' , newPatient , {headers: this.headers});
     }
   }
+
+  removeRecord(ambulance: AmbulanceData) {
+    return this.httpClient.post(this.BASE_URL + 'api/remove-ambulance/' , ambulance , {headers: this.headers});
+  }
 }
