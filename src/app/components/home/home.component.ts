@@ -8,18 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  patients: AmbulanceData[];
+  ambulance: AmbulanceData[] = [];
   count: number;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    let ambulances: AmbulanceData[] = [];
+
     this.dataService.GetAmbulanceDatas().subscribe(
-      (data: AmbulanceData) => {
-        ambulances.push(data);
-       });
-    this.count = ambulances.length;
+      x => this.ambulance.push(new AmbulanceData(x)));
   }
 }
 

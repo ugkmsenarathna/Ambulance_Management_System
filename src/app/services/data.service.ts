@@ -1,6 +1,7 @@
 import { AmbulanceData } from './../models/data';
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,11 @@ export class DataService {
 
     return this.httpClient.get(this.BASE_URL + 'api/view-all/' , {headers: this.headers});
   }
-  AddPatient(newPatient: AmbulanceData) {
-    // this.patientData.push(newPatient);
+  AddPatient(newPatient: AmbulanceData, type): Observable<any> {
+    if (type === 'add') {
+      return this.httpClient.post(this.BASE_URL + 'api/register-ambulance/' , newPatient , {headers: this.headers});
+    } else {
+      return this.httpClient.post(this.BASE_URL + 'api/update-ambulance/' , newPatient , {headers: this.headers});
+    }
   }
 }

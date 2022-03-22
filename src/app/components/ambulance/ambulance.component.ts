@@ -37,17 +37,12 @@ export class AmbulanceComponent implements OnInit {
     switch (this.modalMod) {
       case 'add':
         this.ambulanceForm.value.id = this.dataService.GetAmbulanceDatas();
-        this.dataService.AddPatient(this.ambulanceForm.value);
+        this.dataService.AddPatient(this.ambulanceForm.value, 'add');
         this.ClearPatientForm();
         break;
       case 'update':
-        const patientControls = this.ambulanceForm.controls;
-        for (const key in patientControls) {
-          if (patientControls.hasOwnProperty(key)) {
-            const control = patientControls[key];
-            this.openedAmbulance[key] = control.value;
-          }
-        }
+        this.ambulanceForm.value.id = this.dataService.GetAmbulanceDatas();
+        this.dataService.AddPatient(this.ambulanceForm.value, 'update');
         break;
     }
   }
