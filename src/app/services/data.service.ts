@@ -40,6 +40,7 @@ export class DataService {
   }
 
   removeRecord(ambulance: AmbulanceData) {
+    console.log('Danidu');
     return this.httpClient.post(this.BASE_URL + 'api/remove-ambulance/' , ambulance , {headers: this.headers});
   }
 }
