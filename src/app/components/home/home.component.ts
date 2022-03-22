@@ -17,7 +17,8 @@ export class HomeComponent implements OnInit {
 
     this.dataService.GetAmbulanceDatas().subscribe(
       (result: any ) => {
-        this.ambulance = result[1];
+        // this.ambulance = result[1];
+        console.log(result);
       });
     this.count = this.ambulance.length;
   }
