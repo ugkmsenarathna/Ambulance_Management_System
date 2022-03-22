@@ -17,10 +17,10 @@ export class HomeComponent implements OnInit {
 
     this.dataService.GetAmbulanceDatas().subscribe(
       (result: any ) => {
-        // this.ambulance = result[1];
-        console.log(result);
+        this.ambulance = result;
+        console.log(this.ambulance);
       });
-    this.count = this.ambulance.length;
+    // this.count = this.ambulance;
   }
 }
 

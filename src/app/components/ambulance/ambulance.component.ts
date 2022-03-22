@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AmbulanceComponent implements OnInit {
   constructor(private dataService: DataService, private formBuilder: FormBuilder) { }
-  ambulances: AmbulanceData[];
+  public ambulance: AmbulanceData[];
   ambulanceForm: FormGroup;
   modalMod: string;
   openedAmbulance: AmbulanceData;
@@ -19,8 +19,9 @@ export class AmbulanceComponent implements OnInit {
 
     this.dataService.GetAmbulanceDatas().subscribe(
 
-      (data: AmbulanceData) => {
-          this.ambulances.push(data);
+      (result: any ) => {
+        this.ambulance = result;
+        console.log(this.ambulance);
        });
     this.ambulanceForm = this.formBuilder.group({
       licensePlate: '',
@@ -47,8 +48,8 @@ export class AmbulanceComponent implements OnInit {
     }
   }
   RemovePatient(patient: AmbulanceData) {
-    const index = this.ambulances.indexOf(patient);
-    this.ambulances.splice(index, 1);
+    const index = this.ambulance.indexOf(patient);
+    this.ambulance.splice(index, 1);
   }
   ClearPatientForm() {
     this.ControlSetValueLoop(undefined);
