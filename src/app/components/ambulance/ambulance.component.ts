@@ -37,18 +37,18 @@ export class AmbulanceComponent implements OnInit {
   AddUpdatePatient() {
     switch (this.modalMod) {
       case 'add':
-        this.ambulanceForm.value.id = this.dataService.GetAmbulanceDatas();
+        this.ambulanceForm.value.id = this.dataService.GetAmbulanceDatas().subscribe();
         this.dataService.AddPatient(this.ambulanceForm.value, 'add');
         this.ClearPatientForm();
         break;
       case 'update':
-        this.ambulanceForm.value.id = this.dataService.GetAmbulanceDatas();
+        this.ambulanceForm.value.id = this.dataService.GetAmbulanceDatas().subscribe();
         this.dataService.AddPatient(this.ambulanceForm.value, 'update');
         break;
     }
   }
   RemovePatient(patient: AmbulanceData) {
-    this.dataService.removeRecord(patient);
+    this.dataService.removeRecord(patient).subscribe();
   }
   ClearPatientForm() {
     this.ControlSetValueLoop(undefined);
