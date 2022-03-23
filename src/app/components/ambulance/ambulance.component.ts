@@ -13,6 +13,7 @@ export class AmbulanceComponent implements OnInit {
   public ambulance: AmbulanceData[];
   ambulanceForm: FormGroup;
   modalMod: string;
+  edit: boolean;
   openedAmbulance: AmbulanceData;
 
   ngOnInit(): void {
@@ -24,6 +25,7 @@ export class AmbulanceComponent implements OnInit {
         console.log(this.ambulance);
        });
     this.ambulanceForm = this.formBuilder.group({
+      ambulanceId: '',
       licensePlate: '',
       vehicleModel: '',
       other: ''
@@ -31,7 +33,9 @@ export class AmbulanceComponent implements OnInit {
   }
 
   AddPatientButton() {
+    this.edit = false;
     this.modalMod = 'add';
+    console.log(this.edit);
     this.ClearPatientForm();
   }
   AddUpdatePatient() {
@@ -42,8 +46,10 @@ export class AmbulanceComponent implements OnInit {
         this.ClearPatientForm();
         break;
       case 'update':
+        console.log(this.ambulanceForm.value);
         // this.ambulanceForm.value.id = this.dataService.GetAmbulanceDatas().subscribe();
         this.dataService.AddPatient(this.ambulanceForm.value, 'update').subscribe();
+        this.refresh();
         break;
     }
   }
@@ -56,10 +62,20 @@ export class AmbulanceComponent implements OnInit {
   ClearPatientForm() {
     this.ControlSetValueLoop(undefined);
   }
+  viewAll() {
+    this.dataService.GetAmbulanceDatas().subscribe(
+
+      (result: any ) => {
+        this.ambulance = result;
+        console.log(this.ambulance);
+      });
+  }
   EditOpenModal(pati: AmbulanceData) {
+    this.edit = true;
     this.modalMod = 'update';
     this.openedAmbulance = pati;
     this.ControlSetValueLoop(pati);
+    this.viewAll();
   }
   ControlSetValueLoop(pati: AmbulanceData) {
     const patientControls = this.ambulanceForm.controls;
@@ -73,5 +89,8 @@ export class AmbulanceComponent implements OnInit {
         }
       }
     }
+  }
+  refresh(): void {
+    window.location.reload();
   }
 }

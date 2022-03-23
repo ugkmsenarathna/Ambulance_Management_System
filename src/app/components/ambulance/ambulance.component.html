@@ -26,6 +26,17 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                  <div *ngIf="edit" class="row">
+                    <div class="col-4">
+                      <span class="align-middle text-secondary font-weight-bold">ID</span>
+                    </div>
+                    <div class="col">
+                      <div class="input-group mb-3">
+                        <input  type="text" class="form-control" readonly placeholder="Id" aria-label="ambulanceId"
+                               aria-describedby="basic-addon1" formControlName="ambulanceId">
+                      </div>
+                    </div>
+                  </div>
                     <div class="row">
                         <div class="col-4">
                             <span class="align-middle text-secondary font-weight-bold">License Plate</span>
@@ -100,6 +111,7 @@
             <table class="table table-striped ">
                 <thead>
                     <tr>
+                        <th scope="col">Id</th>
                         <th scope="col">License Plate</th>
                         <th scope="col">Vehicle Model</th>
                         <th scope="col">Other</th>
@@ -109,6 +121,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let pati of ambulance">
+                        <td>{{pati.ambulanceId}}</td>
                         <td>{{pati.licensePlate}}</td>
                         <td>{{pati.vehicleModel}}</td>
                         <td>{{pati.other}}</td>

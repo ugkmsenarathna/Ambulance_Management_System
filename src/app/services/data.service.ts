@@ -37,6 +37,8 @@ export class DataService {
       console.log(newPatient);
       return this.httpClient.post(this.BASE_URL + 'api/register-ambulance/' , newPatient , {headers: this.headers});
     } else {
+      console.log('update Ambulance');
+      console.log(newPatient);
       return this.httpClient.post(this.BASE_URL + 'api/update-ambulance/' , newPatient , {headers: this.headers});
     }
   }
